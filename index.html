@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <title>HangMan</title>
+</head>
+<body>
+    <div class="title">
+        <h1>The Hangman</h1>
+        <button id="start_button" onclick="startGame()">start game</button>
+        <div id="words_right"></div>
+    </div>
+    
+    <div id="mots_rates">
+ 
+    </div>
+    <div id="hangman">
+        <img id="barre" src="public/img/barre.png" alt="">
+        <img id="tete" src="" alt="">
+        <img id="corps" src="" alt="">
+        <img id="brasg" src="" alt="">
+        <img id="brasd" src="" alt="">
+        <img id="jambeg" src="" alt="">
+        <img id="jambed" src="" alt="">
+        <img id="dead" src="" alt="">
+    </div>
+    <div id="words_input">
+        <button class="word_item" onclick="pressLetter(this.innerHTML)" disabled="true">A</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">B</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">C</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">D</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">E</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">F</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">G</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">H</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">I</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">J</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">K</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">L</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">M</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">N</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">O</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">P</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">Q</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">R</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">S</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">T</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">U</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">V</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">W</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">X</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">Y</button>
+        <button class="word_item" onclick="pressLetter(this.innerHTML)">Z</button>
+
+    </div>
+
+
+
+    
+    <script src="public/js/main.js"></script>
+</body>
+</html>
