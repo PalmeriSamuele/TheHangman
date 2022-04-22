@@ -2,9 +2,13 @@ var wordBank = ["BONJOUR","SALUT","MAITREYODA","TOILETTE","SAMUELE","CODINGSCHOO
 var choosen_word = chooseAWord();
 var button_liste = document.getElementById("words_input").children;
 var taille_mots = choosen_word.length;
-for(let i = 0 ;i <  document.getElementsByClassName("word_item").length;i++) {
-    document.getElementsByClassName("word_item")[i].disabled = true;
+disabledButton(true);
+function disabledButton(val) {
+    for(let i = 0 ;i <  document.getElementsByClassName("word_item").length;i++) {
+        document.getElementsByClassName("word_item")[i].disabled = val;
+    }
 }
+
 function melangeMots(deck) {
     var i, j, tmp;
     for (i = deck.length - 1; i > 0; i--) {
@@ -19,11 +23,10 @@ function melangeMots(deck) {
 var chance = 0;
 var find_words = 0;
 function startGame() {
+    removeChild();
+    document.getElementById("message_box").style.display = "none";
     document.getElementById("start_button").disabled = true;
-    for(let i = 0 ;i <  document.getElementsByClassName("word_item").length;i++) {
-        document.getElementsByClassName("word_item")[i].disabled = false;
-    }
-
+    disabledButton(false);
     chooseAWord();
     fillRightWords();
     
@@ -44,20 +47,38 @@ function fillRightWords() {
         document.getElementById('words_right').appendChild(right_word);
     }
 }
+
+function removeChild() {
+    while ( document.getElementById('words_right').firstChild) { 
+        document.getElementById('words_right').removeChild( document.getElementById('words_right').firstChild)
+
+    }
+}
 function pressLetter(word) {
     let match = checkIfMatch(word);
     if (match[0] == true) {
         for (let i = 0; i < match[1].length; i++) {
             document.getElementById('words_right').children[match[1][i]].innerHTML = word;
+            document.getElementById('words_right').children[match[1][i]].style.backgroundColor = "green";
+            document.getElementById('words_right').children[match[1][i]].style.color = "white";
             find_words++;
-            console.log("finds",find_words);
-            console.log("mot",taille_mots)
             if (find_words == taille_mots) {
-                location.reload();
-                window.alert("VOUS AVEZ GAGNE SHEEH");
+                disabledButton();
+                document.getElementById("start_button").disabled = false;
+                let text = document.createElement("p");
+                text.innerHTML = "VOUS AVEZ GAGNE SHEEH";
+                text.className = "text_win"
+                document.getElementById("message_box").appendChild(text);
+                document.getElementById("message_box").style.display = "block";
+                setTimeout(function() {
+                    location.reload();
+                },3000);
+                
             }
+
         }
         button_liste[getButton(word)].style.display = "none";
+
 
         
     }   
@@ -65,6 +86,8 @@ function pressLetter(word) {
         let wrong_word = document.createElement("div");
         wrong_word.classList += "word_item";
         wrong_word.innerHTML = word;
+        wrong_word.style.backgroundColor = "red";
+        wrong_word.style.color = "white";
         document.getElementById("mots_rates").appendChild(wrong_word);
         chance++;
         button_liste[getButton(word)].style.display = "none";
@@ -91,15 +114,23 @@ function pressLetter(word) {
         }
     }
     if (chance == 8 ) {
-        location.reload();
-        window.alert("VOUS AVEZ PERDU BOOH");
+        
+        disabledButton();
+        document.getElementById("start_button").disabled = false;
+        let text = document.createElement("p");
+        text.innerHTML = "VOUS AVEZ PERDU BOOH";
+        text.className = "text_win"
+        document.getElementById("message_box").appendChild(text);
+        document.getElementById("message_box").style.display = "block";
+
+        setTimeout(function() {
+            location.reload();
+        },3000);
     
     }
-
-   
-
-    
 }
+
+
 
 function checkIfMatch(word) {
     let rep = [];
